@@ -1,0 +1,25 @@
+{
+    "name": "jflight/nearby-uk-postcode-finder",
+    "description": "Find all UK Ppostcodes within the radius of a postcode",
+    "authors": [
+        {
+            "name": "James Flight",
+            "email": "jamesflight2006@gmail.com"
+        }
+    ],
+    "require": {
+        "league/geotools": "@stable"
+    },
+    "require-dev":{
+        "behat/behat": "2.4.*@stable",
+        "phpunit/phpunit": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+          "tests/TestCase.php"
+        ],
+        "psr-4": {
+            "Jflight\\PostcodeFinder\\":"src"
+        }
+    }
+}
