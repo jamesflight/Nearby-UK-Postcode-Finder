@@ -1,4 +1,4 @@
-Nearby UK Postcode Finder
+PHP Nearby UK Postcode Finder
 ==========================
 
 The postcode finder takes a UK postcode outcode (the bit before the space) and a radius, and returns all other uk postcodes within that radius.
