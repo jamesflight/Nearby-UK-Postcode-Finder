@@ -1,9 +1,9 @@
 Nearby UK Postcode Finder
 ==========================
 
-This library takes a UK postcode outcode (the bit before the space) and a radius, and returns all other uk postcodes within that radius.
+The postcode finder takes a UK postcode outcode (the bit before the space) and a radius, and returns all other uk postcodes within that radius.
 
-It is powered by a csv file of postcodes and their longitude and latitude coordinates, and should not be used in production environments where speed is important. The library makes use of the excellent [Geotools](http://geotools-php.org/) library.
+It is powered by a csv file of postcodes and their longitude and latitude coordinates, and should not be used in production environments where speed is important. The project makes use of the excellent [Geotools](http://geotools-php.org/) library.
 
 Installation
 ------------
