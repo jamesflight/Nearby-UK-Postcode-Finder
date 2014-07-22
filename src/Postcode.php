@@ -8,16 +8,34 @@ use League\Geotools\Coordinate\Coordinate;
 
 abstract class Postcode {
 
+    /**
+     * @var null
+     */
     public $postcode;
 
+    /**
+     * @var
+     */
     public $latitude;
 
+    /**
+     * @var
+     */
     public $longitude;
 
+    /**
+     * @var
+     */
     protected $geotools;
 
+    /**
+     * @var null|string
+     */
     protected $file = null;
 
+    /**
+     * @param null $postcode
+     */
     public function __construct($postcode = null)
     {
         $this->postcode = $postcode;
@@ -28,12 +46,18 @@ abstract class Postcode {
         }
     }
 
-
+    /**
+     * @param $postcode
+     * @return static
+     */
     public function create($postcode)
     {
         return new static($postcode);
     }
 
+    /**
+     * @return array
+     */
     public function all()
     {
         if (! isset($this->all))
@@ -50,6 +74,11 @@ abstract class Postcode {
         return $this->all;
     }
 
+    /**
+     * @param $radius
+     * @return array
+     * @throws \Exception
+     */
     public function findNearestPostcodes($radius)
     {
         if (! isset($this->postcode))
@@ -60,6 +89,9 @@ abstract class Postcode {
         return $this->getNearest($radius);
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function setCoordinates()
     {
         foreach ($this->all() as $postcode)
@@ -75,11 +107,20 @@ abstract class Postcode {
         throw new \Exception('Current set postcode is not in the csv file.');
     }
 
+    /**
+     * @param $array
+     * @return Coordinate
+     */
     protected function getGeotoolsCoordinate($array)
     {
         return new Coordinate($array);
     }
 
+    /**
+     * @param $coordA
+     * @param $coordB
+     * @return float
+     */
     protected function getDistance($coordA, $coordB)
     {
         if (! isset($this->geotools))
@@ -90,6 +131,10 @@ abstract class Postcode {
         return $this->geotools->distance()->setFrom($coordA)->setTo($coordB)->in('km')->vincenty();
     }
 
+    /**
+     * @param $file
+     * @return array
+     */
     protected function getArrayFromCsv($file)
     {
         $csvData = file_get_contents($file);
@@ -101,6 +146,10 @@ abstract class Postcode {
         return $array;
     }
 
+    /**
+     * @param $array
+     * @return static
+     */
     protected function createFromArray($array)
     {
         $postcode = new static;
@@ -110,6 +159,10 @@ abstract class Postcode {
         return $postcode;
     }
 
+    /**
+     * @param $radius
+     * @return array
+     */
     protected function getNearest($radius)
     {
         $coordA = $this->getGeotoolsCoordinate(array($this->latitude, $this->longitude));
@@ -117,6 +170,13 @@ abstract class Postcode {
         return $results;
     }
 
+    /**
+     * @param $radius
+     * @param $distance
+     * @param $postcode
+     * @param $results
+     * @return array
+     */
     protected function ifInRadiusAddToArray($radius, $distance, $postcode, $results)
     {
         if ($distance <= $radius) {
@@ -126,6 +186,11 @@ abstract class Postcode {
         return $results;
     }
 
+    /**
+     * @param $radius
+     * @param $coordA
+     * @return array
+     */
     protected function getOnlyPostcodesInRadiusOfCoord($radius, $coordA)
     {
         $results = array();
@@ -135,6 +200,13 @@ abstract class Postcode {
         return $results;
     }
 
+    /**
+     * @param $radius
+     * @param $coordA
+     * @param $postcode
+     * @param $results
+     * @return array
+     */
     protected function addPostcodeToArrayIfInRadius($radius, $coordA, $postcode, $results)
     {
         $coordB = $this->getGeotoolsCoordinate(array($postcode->latitude, $postcode->longitude));
