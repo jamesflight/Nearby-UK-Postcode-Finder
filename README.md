@@ -5,6 +5,19 @@ This library takes a UK postcode outcode (the bit before the space) and a radius
 
 It is powered by a csv file of postcodes and their longitude and latitude coordinates, and should not be used in production environments where speed is important. The library makes use of the excellent [Geotools](http://geotools-php.org/) library.
 
+Installation
+------------
+Add to composer.json:
+```json
+    "require": {
+        "jflight/nearby-uk-postcode-finder": "dev-master"
+    }
+```
+Run:
+```bash
+composer update
+```
+
 Usage
 -----
 Create a postcode:
