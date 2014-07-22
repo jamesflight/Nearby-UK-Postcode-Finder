@@ -24,7 +24,7 @@ Create a postcode:
 ```php
 $postcode = new Jflight\PostcodeFinder\UkPostcode('CF11');
 ```
-Get postcodes within a rdius of 10 km:
+Get postcodes within a radius of 10 km:
 ```php
 $nearbyPostcodes = $postcode->findNearestPostcodes(10)); // Array of postcodes
 ```
