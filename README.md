@@ -38,9 +38,7 @@ This would be done as follows:
 ```php
 <?php
 
-namespace Jflight\PostcodeFinder;
-
-class NewPostcode extends Postcode {
+class NewPostcode extends Jflight\PostcodeFinder\Postcode {
     protected $file = "/path/to/csv.csv";
 }
 ```
