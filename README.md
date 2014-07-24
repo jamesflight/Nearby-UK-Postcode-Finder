@@ -31,7 +31,7 @@ $nearbyPostcodes = $postcode->findNearestPostcodes(10)); // Array of postcodes
 
 Extension
 ---------
-In theory, the library could be used for postcodes (or equivalent) for any county, as long as csv lookup of postcodes with their longitude and latitue is available.
+In theory, the postcode class could be extended and used for postcodes (or equivalent) for any county, as long as csv lookup of postcodes with their longitude and latitue is available.
 
 This would be done as follows:
 
