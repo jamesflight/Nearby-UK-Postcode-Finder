@@ -48,6 +48,14 @@ abstract class Postcode {
 
     /**
      * @param $postcode
+     */
+    public function setPostcode($postcode)
+    {
+        $this->postcode = $postcode;
+    }
+
+    /**
+     * @param $postcode
      * @return static
      */
     public function create($postcode)
