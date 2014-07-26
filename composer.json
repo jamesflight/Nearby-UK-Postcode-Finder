@@ -8,8 +8,7 @@
         }
     ],
     "require": {
-        "league/geotools": "@stable",
-        "jflight/nearby-uk-postcode-finder": "dev-master"
+        "league/geotools": "@stable"
     },
     "require-dev":{
         "behat/behat": "2.4.*@stable",
